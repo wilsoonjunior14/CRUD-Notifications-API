@@ -1,0 +1,6 @@
+2021-07-31 22:02:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found; SQL statement:
+select notificati0_.id as id1_0_, notificati0_.deleted as deleted2_0_, notificati0_.description as descript3_0_, notificati0_.postDate as postdate4_0_, notificati0_.title as title5_0_, notificati0_.viewDate as viewdate6_0_ from notification notificati0_ [42102-200]
+2021-07-31 22:03:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "NOTIFICATION" not found; SQL statement:
+select notificati0_.id as id1_0_, notificati0_.deleted as deleted2_0_, notificati0_.description as descript3_0_, notificati0_.postDate as postdate4_0_, notificati0_.title as title5_0_, notificati0_.viewDate as viewdate6_0_ from notification notificati0_ [42102-200]
