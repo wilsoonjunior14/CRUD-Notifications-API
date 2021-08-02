@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.notification.api.dao.NotificationsDAO;
 import com.notification.api.models.Notification;
+import com.notification.api.vo.NotificationFilter;
 
 @Lazy
 @Service
@@ -18,9 +19,15 @@ public class NotificationsBO {
 	@Autowired
 	private NotificationsDAO notificationsDAO;
 	
-	public List<Notification> getAll(){
+	public NotificationFilter getByPagination(NotificationFilter filter){
 		System.err.print("getting all notifications...");
-		return this.notificationsDAO.getAll();
+		
+		final int offset = ((filter.getPage()-1) * filter.getPageSize());
+		
+		filter.setTotal(this.notificationsDAO.getAll().size());
+		filter.setData(this.notificationsDAO.getAllWithPagination(offset, filter.getPageSize()));
+		
+		return filter;
 	}
 	
 	public Notification getById(final Long id) {

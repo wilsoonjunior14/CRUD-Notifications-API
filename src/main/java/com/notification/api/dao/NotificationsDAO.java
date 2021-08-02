@@ -22,8 +22,12 @@ public class NotificationsDAO extends CRUDConfiguration<Notification>{
 	@Autowired
 	private EntityManagerFactory emf;
 	
+	public List<Notification> getAllWithPagination(final int offset, final int pageSize){
+		return executeQueryWithPagination(this.emf.createEntityManager(), this.notificationQuery, new HashMap<>(), offset, pageSize);
+	}
+	
 	public List<Notification> getAll(){
-		return executeQuery(notificationQuery, new HashMap<String, Object>());
+		return executeQuery(notificationQuery, new HashMap<>());
 	}
 	
 	public List<Notification> save(final Notification notification) {

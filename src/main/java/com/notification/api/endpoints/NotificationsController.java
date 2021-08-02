@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import com.notification.api.business.NotificationsBO;
 import com.notification.api.models.Notification;
+import com.notification.api.vo.NotificationFilter;
 
 @Lazy
 @RestController
@@ -27,9 +28,9 @@ public class NotificationsController {
 	@Autowired
 	private NotificationsBO notificationsBO;
 	
-	@GetMapping
-	public ResponseEntity getAll() {
-		return new ResponseEntity<>(new Gson().toJson(this.notificationsBO.getAll()), HttpStatus.OK);
+	@PostMapping(value = "/search")
+	public ResponseEntity getAll(final @RequestBody NotificationFilter filter) {
+		return new ResponseEntity<>(new Gson().toJson(this.notificationsBO.getByPagination(filter)), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/{id}")
